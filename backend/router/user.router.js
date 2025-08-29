@@ -1,58 +1,45 @@
-import express from "express"
-import jwt from "jsonwebtoken"
-import dotenv from "dotenv"
+import express from "express";
+import dotenv from "dotenv";
+import { supabase } from "../db/supabaseClient.js";
 
-const userRouter = express.Router()
+dotenv.config();
+const userRouter = express.Router();
 
-userRouter.post('/login',(req,res) => {
-    // const AccessTocken = jwt.sign(
-    //     {"username" : "User"},
-    //     process.env.ACCESS_TOKEN_SECRET,
-    //     {expiresIn : '600s'}
-    // )
-    // const RefreshToken = jwt.sign(
-    //     {"username" : "User"},
-    //     process.env.REFRESH_TOKEN_SECRET,
-    //     {expiresIn : '1d'}
-    // )
-    const { email, password, role } = req.body;
-    if (!email || !password || !role) {
-        res.status(400).send("Email, password, and role are required");
-        return;
+userRouter.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).send("Email and password are required");
+  }
+
+  const { data: loginData, error: loginError } =
+    await supabase.auth.signInWithPassword({ email, password });
+
+  if (loginData?.user) {
+    return res.status(200).json({
+      message: "Login successful",
+      user: loginData.user,
+      session: loginData.session,
+    });
+  }
+
+  // If login fails because user not found, auto-signup
+  if (loginError && loginError.message.includes("Invalid login credentials")) {
+    const { data: signupData, error: signupError } =
+      await supabase.auth.signUp({ email, password });
+
+    if (signupError) {
+      return res.status(400).json({ error: signupError.message });
     }
-    // Example validation (replace with your own logic)
-    if (email === "admin@example.com" && password === "adminpass" && role === "admin") {
-        // Valid admin
-        res.status(200).send("Admin login successful");
-    } else if (email === "user@example.com" && password === "userpass" && role === "user") {
-        // Valid user
-        res.status(200).send("User login successful");
-    } else {
-        res.status(401).send("Invalid credentials");
-    }
-})
-userRouter.post('/signup',(req,res) => {
-    const reponse = req.body;
-})
 
-userRouter.get('/me',(req,res) => {
-    // get the email and the password from the current user
-})
+    return res.status(201).json({
+      message: "User not found, so signed up successfully",
+      user: signupData.user,
+      session: signupData.session,
+    });
+  }
 
-userRouter.get('/items',(req,res) => {
-    res.status(200).send({
-        // send the array of list items from the database 
-    })
-})
-
-userRouter.post('/claim',(req,res) =>{
-    // get a response code of 200(OK) or 401(unauthorised access)
-    const response = req.body;
-    res.status(200).send({
-        'Access Token' : 123456
-    })
-})
-
+  return res.status(400).json({ error: loginError?.message || "Something went wrong" });
+});
 
 export default userRouter;
-
