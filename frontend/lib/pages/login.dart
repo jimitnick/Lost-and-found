@@ -43,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const LostItemsScreen()),);
     } else {
       setState(() {
-        _error = 'Login failed: Some error occured';
+        _error = jsonDecode(response.body)['message'];  
       });
     }
   }
