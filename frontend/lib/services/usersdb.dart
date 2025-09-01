@@ -90,7 +90,7 @@ class UsersDbException implements Exception {
 
   @override
   String toString() =>
-      'UsersDbException(statusCode: ' + (statusCode?.toString() ?? 'n/a') + ', message: ' + message + ')';
+      'UsersDbException(statusCode: ${statusCode?.toString() ?? 'n/a'}, message: $message)';
 }
 
 
