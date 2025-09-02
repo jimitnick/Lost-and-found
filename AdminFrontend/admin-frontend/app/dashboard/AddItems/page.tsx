@@ -9,16 +9,26 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 interface LostItem {
   name: string;
-  dateLost: string;
+  description: string,
+  location_lost: string,
+  dateLost: Date | null | string;
+  reported_by_name:string,
   securityQuestion: string;
+  reported_by_roll: string,
+  created_post: Date | null | string,
   answer: string;
 }
 
 export default function DashboardPage() {
   const [lostItem, setLostItem] = useState<LostItem>({
     name: "",
-    dateLost: "",
+    description:"",
+    dateLost: new Date(),
+    location_lost:"",
+    reported_by_name:"",
     securityQuestion: "",
+    reported_by_roll:"",
+    created_post: new Date(),
     answer: "",
   });
 
@@ -33,7 +43,7 @@ export default function DashboardPage() {
     if (data){
         console.log("Item added successfully:", data);
     }
-    setLostItem({ name: "", dateLost: "", securityQuestion: "", answer: ""}); // Reset form
+    setLostItem({ name: "",description:"", dateLost: null,location_lost:"",reported_by_name:"",reported_by_roll:"", securityQuestion: "", answer: "",created_post:null}); // Reset form
   };
 
   return (
@@ -54,6 +64,18 @@ export default function DashboardPage() {
             />
           </div>
           <div>
+            <label htmlFor="name" className="block text-sm font-medium">Description</label>
+            <input
+              type="text"
+              name="description"
+              id="description"
+              value={lostItem.description}
+              onChange={handleChange}
+              required
+              className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+            />
+          </div>
+          <div>
             <label htmlFor="dateLost" className="block text-sm font-medium">Date Lost</label>
             <input
               type="date"
@@ -65,6 +87,55 @@ export default function DashboardPage() {
               className="mt-1 block w-full border border-gray-300 rounded-md p-2"
             />
           </div>
+          <div>
+            <label htmlFor="dateLost" className="block text-sm font-medium">Created Post</label>
+            <input
+              type="date"
+              name="created_post"
+              id="created_post"
+              value={lostItem.created_post = new Date()}
+              onChange={handleChange}
+              required
+              className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+            />
+          </div>
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium">Location Lost</label>
+            <input
+              type="text"
+              name="location_lost"
+              id="location_lost"
+              value={lostItem.location_lost}
+              onChange={handleChange}
+              required
+              className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+            />
+          </div>
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium">Reported By Name</label>
+            <input
+              type="text"
+              name="reported_by_name"
+              id="reported_by_name"
+              value={lostItem.reported_by_name}
+              onChange={handleChange}
+              required
+              className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+            />
+          </div>
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium">Reported By Roll</label>
+            <input
+              type="text"
+              name="reported_by_roll"
+              id="reported_by_roll"
+              value={lostItem.reported_by_roll}
+              onChange={handleChange}
+              required
+              className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+            />
+          </div>
+          
           <div>
             <label htmlFor="securityQuestion" className="block text-sm font-medium">Security Question</label>
             <select
@@ -80,6 +151,18 @@ export default function DashboardPage() {
               <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
               <option value="What was the name of your first school?">What was the name of your first school?</option>
             </select>
+          </div>
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium">Answer</label>
+            <input
+              type="text"
+              name="answer"
+              id="answer"
+              value={lostItem.answer}
+              onChange={handleChange}
+              required
+              className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+            />
           </div>
           <button type="submit" className="mt-4 bg-blue-500 text-white rounded-md p-2">Submit</button>
         </form>

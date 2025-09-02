@@ -51,13 +51,13 @@ const LostItems: React.FC = () => {
                         boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
                     }}
                 >
+                    <img src={item.image_url} alt={item.item_name} className='object-cover w-32 flex items-center justify-center'  />
                     <p className='text-md font-bold'>Item Name: {item.item_name}</p>
                     <p className='text-md font-bold'>Description: {item.description}</p>
                     <p className='text-md font-bold'>Location Lost: {item.location_lost}</p>
                     <p className='text-md font-bold'>Date Lost: {item.date_lost}</p>
                     <p className='text-md font-bold'>Reported By: {item.reported_by_name} ({item.reported_by_roll ? item.reported_by_roll : 'Unknown'})</p>
                     <p className='text-md font-bold'>Created Post: {item.created_post}</p>
-                    <img src={item.image_url} alt={item.item_name} style={{ maxWidth: '100%', borderRadius: '8px' }} />
                 </div>
             ))}
         </div>
