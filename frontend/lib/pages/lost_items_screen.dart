@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -146,23 +147,13 @@ class _LostItemsScreenState extends State<LostItemsScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-    
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: const Text(
-          "Amrita Retriever",
-          style: TextStyle(
-            color: Colors.white,
-            fontFamily: "Honk",
-            fontSize: 30,
-            fontVariations: [
-              FontVariation('ital', 0),
-              FontVariation('wght', 400),
-              FontVariation('MORF', 15),
-              FontVariation('SHLN', 50)
-            ],
+        title: SizedBox(
+          height: 50,
+          child: Image.asset(
+            "assets/logo.png"
           ),
         ),
         backgroundColor: const Color(0xFFD5316B),
@@ -175,7 +166,8 @@ class _LostItemsScreenState extends State<LostItemsScreen> {
         ),
       ),
       body: isLoading
-          ? const Center(child: CircularProgressIndicator(color: Color(0xFFD5316B)))
+          ? const Center(
+              child: CircularProgressIndicator(color: Color(0xFFD5316B)))
           : Column(
               children: [
                 // Search Field
@@ -186,9 +178,11 @@ class _LostItemsScreenState extends State<LostItemsScreen> {
                       filled: true,
                       fillColor: Colors.white,
                       hintText: "Search items...",
-                      prefixIcon: const Icon(Icons.search, color: Color(0xFFD5316B)),
+                      prefixIcon: const Icon(Icons.search,
+                          color: Color(0xFFD5316B)),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Color(0xFFD5316B), width: 2),
+                        borderSide: const BorderSide(
+                            color: Color(0xFFD5316B), width: 2),
                         borderRadius: BorderRadius.circular(16),
                       ),
                       enabledBorder: OutlineInputBorder(
@@ -244,9 +238,12 @@ class _LostItemsScreenState extends State<LostItemsScreen> {
                                     width: 60,
                                     height: 60,
                                     fit: BoxFit.cover,
-                                    errorBuilder: (context, error, stackTrace) =>
-                                        const Icon(Icons.image_not_supported,
-                                            color: Colors.grey, size: 40),
+                                    errorBuilder:
+                                        (context, error, stackTrace) =>
+                                            const Icon(
+                                                Icons.image_not_supported,
+                                                color: Colors.grey,
+                                                size: 40),
                                   ),
                                 ),
                                 title: Text(

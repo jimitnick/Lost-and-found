@@ -21,15 +21,15 @@ class WelcomeScreen extends StatelessWidget {
                   fontSize: 20,
                 ),
               ),
-              const SizedBox(height: 5),
-              const Text(
-                "Amrita Retriever",
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+              const SizedBox(height: 10),
+              
+              
+              Image.asset(
+                "assets/logo.png", 
+                height: 120, 
+                fit: BoxFit.contain,
               ),
+
               const SizedBox(height: 30),
               const Text(
                 "Login as",
@@ -52,7 +52,7 @@ class WelcomeScreen extends StatelessWidget {
                   );
                 },
                 child: const Text(
-                  "Student / Staff Login",
+                  "Login",
                   style: TextStyle(
                       color: Color(0xFF1A237E), fontWeight: FontWeight.bold),
                 ),
@@ -71,7 +71,7 @@ class WelcomeScreen extends StatelessWidget {
                   );
                 },
                 child: const Text(
-                  "Student / Staff SignUp",
+                  "SignUp",
                   style: TextStyle(
                       color: Color(0xFF1A237E), fontWeight: FontWeight.bold),
                 ),
@@ -79,7 +79,7 @@ class WelcomeScreen extends StatelessWidget {
               const SizedBox(height: 40),
               Image.asset(
                 'assets/goldie.png',
-                height: 150, 
+                height: 150,
               ),
             ],
           ),
