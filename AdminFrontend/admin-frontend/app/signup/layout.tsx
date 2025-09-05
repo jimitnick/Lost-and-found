@@ -12,7 +12,7 @@ export default function SignupLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-gradient-to-br from-purple-100 to-indigo-100 min-h-screen flex items-center justify-center">
+    <div className="bg-gradient-to-br text-black from-purple-100 to-indigo-100 min-h-screen flex items-center justify-center">
       {children}
     </div>
   );

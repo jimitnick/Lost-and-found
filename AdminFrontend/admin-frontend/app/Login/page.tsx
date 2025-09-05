@@ -48,7 +48,7 @@ export default function AdminLogin() {
               />
             </svg>
           </div>
-          <h2 className="mt-4 text-2xl font-bold">Admin Login</h2>
+          <h2 className="mt-4 text-2xl text-black font-bold">Admin Login</h2>
           <p className="text-gray-500 text-sm">
             Sign in to access the admin dashboard
           </p>
@@ -64,7 +64,7 @@ export default function AdminLogin() {
               placeholder="admin@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="mt-2 w-full px-4 py-2 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               required
             />
           </div>
@@ -79,7 +79,7 @@ export default function AdminLogin() {
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-4 py-2 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 required
               />
             </div>
