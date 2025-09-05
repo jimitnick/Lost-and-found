@@ -39,7 +39,7 @@ export default function Topbar() {
           </Button>
           <ThemeToggle />
           <Button variant="default" size="default" aria-label="Notifications" onClick={() => {
-            router.push("/Login");
+            router.replace("/Login");
           }}>
             Logout
           </Button>
