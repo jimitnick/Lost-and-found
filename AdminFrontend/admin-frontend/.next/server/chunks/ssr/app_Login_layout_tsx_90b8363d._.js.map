@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///Users/abhijith/Documents/Lost-and-found/AdminFrontend/admin-frontend/app/Login/layout.tsx"],"sourcesContent":["import \"../globals.css\";\nimport { Providers } from \"../providers\";\n\nexport default function RootLayout({ children }: { children: React.ReactNode }) {\n  return (\n        <Providers>{children}</Providers>\n  );\n}\n"],"names":[],"mappings":";;;;AACA;;;;AAEe,SAAS,WAAW,EAAE,QAAQ,EAAiC;IAC5E,qBACM,8OAAC,iHAAA,CAAA,YAAS;kBAAE;;;;;;AAEpB","debugId":null}}]
-}
