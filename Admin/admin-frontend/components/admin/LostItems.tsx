@@ -65,8 +65,8 @@ const LostItems: React.FC = () => {
                 </div>
             ))}
         </div>
-        <div className='font-semibold mt-8 mb-4 flex flex-wrap'>
-            <div className='w-full border-1 flex items-center justify-center h-20 border-zinc-900 p-2 rounded-xl mb-6 bg-gray-300'>Claimed Items</div>
+        <div className='font-semibold mt-8 mb-4 flex gap-4 flex-wrap'>
+            <div className='w-full border-1 flex gap-4 items-center justify-center h-20 border-zinc-900 p-2 rounded-xl mb-6 bg-gray-300'>Claimed Items</div>
             {lostItems.map(item => (
                 item.claimed_by != null &&
                 <div

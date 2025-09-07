@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 6, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 12, "column": 0}, "map": {"version":3,"sources":["file:///Users/abhijith/Documents/Lost-and-found/AdminFrontend/admin-frontend/app/dashboard/lostitems/layout.tsx"],"sourcesContent":["import type React from \"react\"\nimport DashboardPage from \"./page\"\n\nexport default function DashboardLayout({ children }: { children: React.ReactNode }) {\n  return (\n    <div className=\"min-h-screen bg-background text-foreground\">\n      <div className=\"flex\">\n        <div className=\"flex min-h-screen flex-1 flex-col\"> \n          <main className=\"p-4 md:p-6 lg:p-8\">\n            <div className=\"mx-auto w-full max-w-7xl\">{<DashboardPage />}</div>\n          </main>\n        </div>\n      </div>\n    </div>\n  )\n}\n"],"names":[],"mappings":";;;;AACA;;;AAEe,SAAS,gBAAgB,EAAE,QAAQ,EAAiC;IACjF,qBACE,8OAAC;QAAI,WAAU;kBACb,cAAA,8OAAC;YAAI,WAAU;sBACb,cAAA,8OAAC;gBAAI,WAAU;0BACb,cAAA,8OAAC;oBAAK,WAAU;8BACd,cAAA,8OAAC;wBAAI,WAAU;kCAA4B,cAAA,8OAAC,sIAAA,CAAA,UAAa;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAMrE","debugId":null}}]
+}
