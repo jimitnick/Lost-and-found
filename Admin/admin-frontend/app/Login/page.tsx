@@ -92,8 +92,6 @@ export default function AdminLogin() {
             Sign In
           </button>
         </form>
-
-        
       </div>
     </div>
   );
