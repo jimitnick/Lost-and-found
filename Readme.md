@@ -74,18 +74,6 @@ The platform ensures secure authentication, a clean user interface, and efficien
 
 ---
 
-## UI Screenshots
-
-Suggested screenshots to include:
-- Login Screen  
-- Student Lost Items View  
-- Admin Add Item Page  
-- Admin Claim Item Page  
-- Admin Dashboard  
-
-(Add actual images in your repository’s `/assets` folder.)
-
----
 
 ## How to Run the Project
 
