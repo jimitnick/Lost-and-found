@@ -9,9 +9,7 @@ Amrita Retriever is a campus-wide lost and found application designed to streaml
 It consists of:
 
 📱 Flutter Mobile App (Students + Staff)
-
 🖥️ React Admin Dashboard (Admins)
-
 🔗 Node.js Backend with Supabase
 
 The system ensures secure authentication, clean UI, and fast reporting/claiming of items.
@@ -19,16 +17,12 @@ The system ensures secure authentication, clean UI, and fast reporting/claiming 
 ✨ Key Features
 👨‍🎓 For Students & Staff (Mobile App)
 
-🔐 Login with Microsoft OAuth 2.0
+🔐 Login with Supabase authentication
 
 🔍 Browse lost items with:
-
 Photos
-
 Location
-
 Description
-
 Date found
 
 🎯 Filter items by block, category, or keywords
@@ -71,53 +65,24 @@ User receives JWT token
 
 Token used for secure backend communication
 
-📡 API Endpoints
-🔓 Student/Staff Endpoints
-Method	Endpoint	Description
-GET	/api/items	Fetch all lost items (supports filters)
-GET	/api/items/:id	Fetch item details
-🔐 Admin Endpoints
-Method	Endpoint	Description
-POST	/api/items	Upload a new lost item
-PUT	/api/items/:id/claim	Approve a claim
-PUT	/api/items/:id/update-claim-instructions	Update claim process
 🗄️ Database Schema
 
-MongoDB Fields
 
-{
-  "imageUrl": "String",
-  "location": "String",
-  "description": "String",
-  "dateFound": "Date",
-  "name": "String",
-  "rollNumber": "String",
-  "isClaimed": "Boolean"
-}
 
 
 Image Flow:
 
-Images uploaded → stored in Amazon S3
+Images uploaded → stored in Supabase bucket
 
-S3 URL + metadata → stored in MongoDB
-
-📱 Device Support
-
-Android 8.0+ (API 26+)
-
-iOS 13+
+Supabase bucket URL + metadata → stored in Supabase
 
 🖼️ UI Screenshots
-
-You can attach your PDF images like this:
 
 📸 Login Screen  
 📸 Student Lost Items View  
 📸 Admin Add Item  
 📸 Admin Claim Item  
 📸 Admin Dashboard  
-
 
 (Add actual images in your repo’s /assets folder)
 
@@ -129,23 +94,12 @@ npm start
 
 📱 Mobile App (Flutter)
 cd mobile
-flutter pub get
 flutter run
 
 🌐 Admin Dashboard
 cd admin
 npm install
 npm start
-
-🚀 Future Enhancements
-
-🔔 Push notifications
-
-🧠 AI-based item matching
-
-🏷️ QR-code tagging for found items
-
-📍 Location-based smart suggestions
 
 👥 Team
 
