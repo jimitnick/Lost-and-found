@@ -92,19 +92,18 @@ Suggested screenshots to include:
 ### Backend Setup
 First clone the repository.
 Then, run the following:
-`cd backend
-npm install
-npm start`
+`cd backend`
+`npm install`
+`npm start`
 
 ### Mobile Application:
-`cd frontend
-flutter run
-`
+`cd frontend`
+`flutter run`
+
 
 ### Admin Dashboard:
-`cd admin
-npm install
-npm start
-`
+`cd admin`
+`npm install`
+`npm start`
 
 
