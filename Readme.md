@@ -48,11 +48,17 @@ Date found
 🧰 Tech Stack
 Layer	Technology
 Mobile App	Flutter (Dart)
+
 Web Dashboard	React.js + Tailwind CSS
+
 Backend	Node.js + Express.js
+
 Authentication	Microsoft OAuth 2.0
+
 Database	MongoDB
+
 Image Storage	Amazon S3 Bucket
+
 🔐 Authentication Flow
 
 User initiates login → Redirects to Microsoft OAuth
@@ -87,21 +93,27 @@ Supabase bucket URL + metadata → stored in Supabase
 (Add actual images in your repo’s /assets folder)
 
 🧪 How to Run the Project
+
 🖥 Backend Setup
 
 cd backend
+
 npm install
+
 npm start
 
 📱 Mobile App (Flutter)
 
 cd mobile
+
 flutter run
 
 🌐 Admin Dashboard
 
 cd admin
+
 npm install
+
 npm start
 
 👥 Team
