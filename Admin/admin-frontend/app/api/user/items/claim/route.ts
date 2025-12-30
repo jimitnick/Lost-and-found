@@ -6,7 +6,7 @@ export async function POST(req: Request) {
   const supabaseServer = await createServerSupabaseClient()
 
   const { data: item } = await supabaseServer
-    .from('lost_items')
+    .from('Lost_items')
     .select('claimed, answer')
     .eq('item_id', item_id)
     .single()
@@ -26,7 +26,7 @@ export async function POST(req: Request) {
   }
 
   await supabaseServer
-    .from('lost_items')
+    .from('Lost_items')
     .update({
       claimed: true,
       claimed_by: {

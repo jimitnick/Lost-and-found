@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:amrita_retriever/pages/item_details_page.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class LostItemsScreen extends StatefulWidget {
   const LostItemsScreen({super.key});
@@ -9,7 +10,7 @@ class LostItemsScreen extends StatefulWidget {
   @override
   State<LostItemsScreen> createState() => _LostItemsScreenState();
 }
-
+const String authSupabaseUrl = "https://etdewmgrpvoavevlpibg.supabase.co";
 class _LostItemsScreenState extends State<LostItemsScreen> {
   List<Map<String, dynamic>> allItems = [];
   List<Map<String, dynamic>> displayedItems = [];
@@ -30,7 +31,11 @@ class _LostItemsScreenState extends State<LostItemsScreen> {
 
   Future<void> fetchItems() async {
     try {
-      final response = await Supabase.instance.client
+      final supabase = SupabaseClient(
+        authSupabaseUrl,
+        dotenv.env['SUPABASE_ANON_KEY']!,
+      );
+      final response = await supabase
           .from('Lost_items')
           .select()
           .order('created_post', ascending: false);

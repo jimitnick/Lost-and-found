@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ItemDetailsPage extends StatefulWidget {
   final Map<String, dynamic> item;
@@ -9,6 +10,7 @@ class ItemDetailsPage extends StatefulWidget {
   @override
   State<ItemDetailsPage> createState() => _ItemDetailsPageState();
 }
+const String authSupabaseUrl = "https://etdewmgrpvoavevlpibg.supabase.co";
 
 class _ItemDetailsPageState extends State<ItemDetailsPage> {
   bool _claimed = false; // track button state
@@ -21,7 +23,10 @@ class _ItemDetailsPageState extends State<ItemDetailsPage> {
 
   /// Check if already claimed in DB
   Future<void> _checkIfAlreadyClaimed() async {
-    final supabase = Supabase.instance.client;
+    final supabase = SupabaseClient(
+      authSupabaseUrl,
+      dotenv.env['SUPABASE_ANON_KEY']!
+    );
 
     final response = await supabase
         .from("Lost_items")

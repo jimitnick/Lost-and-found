@@ -1,17 +1,19 @@
 import 'package:amrita_retriever/pages/lost_items_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
+const String authSupabaseUrl = "https://etdewmgrpvoavevlpibg.supabase.co";
 
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  
   bool _loading = false;
   String? _error;
 
@@ -22,7 +24,11 @@ class _LoginPageState extends State<LoginPage> {
     });
 
     try {
-      final supabase = Supabase.instance.client;
+      final supabase = SupabaseClient(
+        authSupabaseUrl,
+        dotenv.env['SUPABASE_ANON_KEY']!,
+      );
+
       final response = await supabase.auth.signInWithPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
@@ -49,6 +55,7 @@ class _LoginPageState extends State<LoginPage> {
       _loading = false;
     });
   }
+
 
   @override
   Widget build(BuildContext context) {

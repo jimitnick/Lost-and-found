@@ -4,11 +4,12 @@ import { createServerSupabaseClient } from '@/lib/supabase-server'
 export async function GET() {
   const supabaseServer = await createServerSupabaseClient()
   const { data, error } = await supabaseServer
-    .from('lost_items')
+    .from('Lost_items')
     .select(`
       item_id,
       item_name,
       description,
+      reported_by_roll,
       location_lost,
       date_lost,
       image_url,
