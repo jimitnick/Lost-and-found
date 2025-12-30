@@ -30,29 +30,35 @@ export async function POST(req: Request) {
             }, { status: 400 });
         }
 
-        // Check if user already exists
-        const { data: existingUser } = await supabase
-            .from("Users")
-            .select("email")
-            .eq("email", email)
-            .single();
+        // 1. Create User in Supabase Auth (Critical for Login)
+        const { data: authData, error: authError } = await supabase.auth.admin.createUser({
+            email,
+            password,
+            email_confirm: true // Auto-confirm for now to match legacy experience
+        });
 
-        if (existingUser) {
-            return NextResponse.json({ error: "User already exists" }, { status: 400 });
+        if (authError) {
+            console.error("Auth Signup Error:", authError);
+            return NextResponse.json({ error: authError.message }, { status: 400 });
         }
 
-        // Hash Password
+        // 2. Insert into custom Users table (For Admin Dashboard)
+        // Hash Password for legacy table consistency
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        // Insert User
         const { error: insertError } = await supabase
             .from("Users")
-            .insert([{ email, password: hashedPassword }]);
+            .insert([{
+                email,
+                password: hashedPassword,
+                // store auth_id if you want to link them later: id: authData.user.id 
+            }]);
 
         if (insertError) {
-            console.error("Insert Error:", insertError);
-            return NextResponse.json({ error: insertError.message }, { status: 400 });
+            console.error("DB Insert Error:", insertError);
+            // Ideally we should rollback auth user here, but for now just report error
+            return NextResponse.json({ error: "User created in Auth but failed to save to DB: " + insertError.message }, { status: 400 });
         }
 
         return NextResponse.json({ message: "User created successfully" }, { status: 201 });
