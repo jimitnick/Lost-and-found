@@ -90,8 +90,9 @@ Then, run the following:
 
 
 ### Admin Dashboard:
-`cd admin`
-`npm install`
-`npm start`
 
+https://lost-and-found-rose-phi.vercel.app/
 
+Test Login Credentials:
+` email : admin@lostandfound.com
+password: adminlostandfound `
