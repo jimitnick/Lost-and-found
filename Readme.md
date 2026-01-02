@@ -80,9 +80,10 @@ The platform ensures secure authentication, a clean user interface, and efficien
 ### Backend Setup
 First clone the repository.
 Then, run the following:
-`cd backend`
+`cd Admin`
+`cd admin-frontend`
 `npm install`
-`npm start`
+`npm run dev`
 
 ### Mobile Application:
 `cd frontend`
@@ -93,6 +94,6 @@ Then, run the following:
 
 https://lost-and-found-rose-phi.vercel.app/
 
-Test Login Credentials:
+Test Login Credentials for the admin:
 `email : admin@lostandfound.com`
 `password: adminlostandfound`
