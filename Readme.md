@@ -1,4 +1,3 @@
-
 # Amrita Retriever – Lost & Found Application
 <img src= "assets/logo.png">
 A cross-platform Lost & Found system built for students, staff, and administrators at Amrita.
@@ -6,7 +5,7 @@ A cross-platform Lost & Found system built for students, staff, and administrato
 <p align="center">
   <img src="https://img.shields.io/badge/Platform-Android%20%7C%20iOS-blue?style=flat-square"/>
   <img src="https://img.shields.io/badge/Frontend-Flutter-orange?style=flat-square"/>
-  <img src="https://img.shields.io/badge/Backend-Node.js-green?style=flat-square"/>
+  <img src="https://img.shields.io/badge/Backend-Next.js-black?style=flat-square"/>
   <img src="https://img.shields.io/badge/Database-Supabase-3ECF8E?style=flat-square"/>
   <img src="https://img.shields.io/badge/Auth-Supabase%20Auth-3ECF8E?style=flat-square"/>
 </p>
@@ -20,7 +19,7 @@ Amrita Retriever is a campus-wide lost and found application designed to streaml
 It consists of:
 - Flutter Mobile Application (Students and Staff)
 - React-based Admin Dashboard (Administrators)
-- Node.js Backend integrated with Supabase
+- Next.js Backend (BFF) integrated with Supabase
 
 The platform ensures secure authentication, a clean user interface, and efficient item reporting and claim management.
 
@@ -54,17 +53,17 @@ The platform ensures secure authentication, a clean user interface, and efficien
 |------------------|--------------------------------|
 | Mobile App       | Flutter (Dart)                 |
 | Web Dashboard    | React.js, Tailwind CSS         |
-| Backend          | Node.js, Express.js            |
-| Database         | SupaBase                       |
-| Image Storage    | SupaBase Bucket                |
+| Backend          | Next.js (BFF)                  |
+| Database         | Supabase                       |
+| Image Storage    | Supabase Bucket                |
 
 ---
 
 ## Authentication Flow
 
 1. User initiates login and is redirected to Supabase.  
-2. SupaBase validates identity and returns the user profile.  
-3. Backend creates or updates the user entry in SupaBase.  
+2. Supabase validates identity and returns the user profile.  
+3. Backend creates or updates the user entry in Supabase.  
 ---
 
 
@@ -77,23 +76,24 @@ The platform ensures secure authentication, a clean user interface, and efficien
 
 ## How to Run the Project
 
-### Backend Setup
-First clone the repository.
-Then, run the following:
-`cd Admin`
-`cd admin-frontend`
-`npm install`
-`npm run dev`
+### Admin Dashboard & Backend Setup
+Inside the `Admin/admin-frontend` directory:
+```bash
+cd Admin/admin-frontend
+npm install
+npm run dev
+```
 
-### Mobile Application:
-`cd frontend`
-`flutter run`
+### Mobile Application
+Inside the `frontend` directory:
+```bash
+cd frontend
+flutter run
+```
 
-
-### Admin Dashboard:
-
+### Admin Dashboard URL
 https://lost-and-found-rose-phi.vercel.app/
 
-Test Login Credentials for the admin:
-`email : admin@lostandfound.com`
-`password: adminlostandfound`
+**Test Login Credentials for the admin:**
+- Email: `admin@lostandfound.com`
+- Password: `adminlostandfound`
